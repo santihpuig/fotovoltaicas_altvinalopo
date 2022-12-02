@@ -17,10 +17,7 @@ fillOpacity: 0.1,
 stroke: 0,
 };
 
-
 var velo = L.geoJson(velo, {style: estiloVelo, interactive: false}).addTo(map);
-
-
 
 // Centrales
 
