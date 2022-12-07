@@ -50,7 +50,7 @@ var overlayMaps = {
             { label: 'BIC distancia 500 m', layer: bicsTodos },
             { label: 'Paisajes protegidos', layer: paisajespTodos },
             { label: 'Pendientes sup. al 25%', layer: pendientes },
-            { label: 'Peligro de inudación', layer: pinundacion },
+            { label: 'Peligro de inundación', layer: pinundacion },
             { label: 'Capacidad agrológica', layer: cagrologica },
             { label: 'Corredores y cauces fluviales', layer: fluviales },
             { label: 'Recarga de acuíferos', layer: acuiferos },

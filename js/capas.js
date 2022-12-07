@@ -294,7 +294,7 @@ var tramiteValladoGVA = L.tileLayer.wms("https://terramapas.icv.gva.es/2601_Foto
 });
 
 
-var tramiteLineasOtras = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
+var tramiteLineasOtras = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
     layers: 'Lineas_evacuación_otras_AAPP',
     format: 'image/png',
     transparent: true, 
@@ -303,7 +303,7 @@ var tramiteLineasOtras = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/service
     maxZoom: 21,
 });
 
-var tramiteLineasGVA = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
+var tramiteLineasGVA = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
     layers: 'Lineas_evacuación_GVA',
     format: 'image/png',
     transparent: true, 
@@ -313,7 +313,7 @@ var tramiteLineasGVA = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/
 });
 
 
-var tramiteSubestacionesOtras = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
+var tramiteSubestacionesOtras = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
     layers: 'Subestaciones_electricas_otras_AAPP',
     format: 'image/png',
     transparent: true, 
@@ -322,7 +322,7 @@ var tramiteSubestacionesOtras = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/
     maxZoom: 21,
 });
 
-var tramiteSubestacionesGVA = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
+var tramiteSubestacionesGVA = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
     layers: 'Subestaciones_electricas_GVA',
     format: 'image/png',
     transparent: true, 
@@ -527,8 +527,8 @@ function popupMontes (feature, layer){
 
 // Corredores territoriales
 
-var corredoresTerritoriales = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/infraestructura_verde/MapServer/WmsServer?", {
-        layers: '1',
+var corredoresTerritoriales = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
+        layers: '21',
         format: 'image/png',
         transparent: true, 
         attribution: 'Conselleria Politica Territorial | ICV',
@@ -538,8 +538,8 @@ var corredoresTerritoriales = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/se
 
 // BICS + BICS distancia 500m    
 
-var bics = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
-    layers: '26',
+var bics = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
+    layers: '18',
     format: 'image/png',
     transparent: true, 
     attribution: 'Conselleria Politica Territorial | ICV',
@@ -548,8 +548,8 @@ var bics = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestr
 });
 
 
-var bics500 = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
-    layers: '25',
+var bics500 = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
+    layers: '19',
     format: 'image/png',
     transparent: true, 
     attribution: 'Conselleria Politica Territorial | ICV',
@@ -562,8 +562,8 @@ var bicsTodos = L.layerGroup([bics, bics500]);
 
 // Paisajes protegidos + paisajes protegidos distancia 500 m.   
 
-var paisajesp = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
-    layers: '22',
+var paisajesp = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
+    layers: '14',
     format: 'image/png',
     transparent: true, 
     attribution: 'Conselleria Politica Territorial | ICV',
@@ -571,8 +571,8 @@ var paisajesp = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infr
     maxZoom: 21,
 });
 
-var paisajesp500 = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
-    layers: '21',
+var paisajesp500 = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
+    layers: '15',
     format: 'image/png',
     transparent: true, 
     attribution: 'Conselleria Politica Territorial | ICV',
@@ -584,8 +584,8 @@ var paisajespTodos = L.layerGroup([paisajesp, paisajesp500]);
 
 // Pendientes superiores al 25%
 
-var pendientes = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
-    layers: '19',
+var pendientes = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
+    layers: '12',
     format: 'image/png',
     transparent: true, 
     attribution: 'Conselleria Politica Territorial | ICV',
@@ -595,8 +595,8 @@ var pendientes = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_inf
 
 // Peligro de inundación 
 
-var pinundacion = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
-    layers: '13',
+var pinundacion = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
+    layers: '10',
     format: 'image/png',
     transparent: true, 
     attribution: 'Conselleria Politica Territorial | ICV',
@@ -606,10 +606,11 @@ var pinundacion = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_in
 
 // Capacidad agrológica
 
-var cagrologica = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
-    layers: '15',
+var cagrologica = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
+    layers: '8',
     format: 'image/png',
-    transparent: true, 
+    transparent: true,
+    opacity: 0.5,
     attribution: 'Conselleria Politica Territorial | ICV',
     minZoom: 1,
     maxZoom: 21,
@@ -617,8 +618,8 @@ var cagrologica = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_in
 
  // Fluviales
 
- var fluvialTerritorial = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
-    layers: '9',
+ var fluvialTerritorial = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
+    layers: '4',
     format: 'image/png',
     transparent: true, 
     attribution: 'Conselleria Politica Territorial | ICV',
@@ -626,7 +627,7 @@ var cagrologica = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_in
     maxZoom: 21,
 });
 
-var fluvialTerritorial100 = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
+var fluvialTerritorial100 = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
     layers: '',
     format: 'image/png',
     transparent: true, 
@@ -635,8 +636,8 @@ var fluvialTerritorial100 = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/serv
     maxZoom: 21,
 });
 
-var fluvialCauce = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
-    layers: '12',
+var fluvialCauce = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
+    layers: '6',
     format: 'image/png',
     transparent: true, 
     attribution: 'Conselleria Politica Territorial | ICV',
@@ -644,8 +645,8 @@ var fluvialCauce = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_i
     maxZoom: 21,
 });
 
-var fluvialCauce50 = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
-    layers: '11',
+var fluvialCauce50 = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
+    layers: '4',
     format: 'image/png',
     transparent: true, 
     attribution: 'Conselleria Politica Territorial | ICV',
@@ -657,8 +658,8 @@ var fluviales = L.layerGroup([fluvialTerritorial, fluvialTerritorial100, fluvial
 
 // Recarga de acuíferos
 
-var acuiferos = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_infraestructuras/energias_renovables/MapServer/WmsServer?", {
-    layers: '9',
+var acuiferos = L.tileLayer.wms("http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?", {
+    layers: '2',
     format: 'image/png',
     transparent: true, 
     attribution: 'Conselleria Politica Territorial | ICV',
