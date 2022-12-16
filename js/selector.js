@@ -17,7 +17,8 @@ var overlayMaps = {
   collapsed: false,
   children: [
     {
-      label: '<b>Centrales solares <a href="/3D/index.html">Versión 3D</a></b>',
+      label:
+        '<b>Centrales solares <a href="https://santihpuig.com/map/solar/3D/index.html">Versión 3D</a></b>',
       selectAllCheckbox: true,
       collapsed: false,
       children: [
