@@ -2,27 +2,25 @@
 
 html {
   scroll-behavior: smooth;
- }
+}
 
-body { 
-    background:white;
-    margin: 0;
+body {
+  background: white;
+  margin: 0;
   padding: 0;
-  }
+}
 
 #map {
-    width: 100%;
-    height: 850px;
-
-  }
+  width: 100%;
+  height: 850px;
+}
 
 #header {
   position: absolute;
   padding: 10px;
   width: 100%;
   z-index: 2000;
-  background: rgb(0,0,0,0);
-
+  background: rgb(0, 0, 0, 0);
 }
 
 #footer {
@@ -30,33 +28,31 @@ body {
   bottom: 35px;
   width: 100%;
   z-index: 2000;
-  background: rgb(0,0,0,0);
+  background: rgb(0, 0, 0, 0);
 }
 
 #top {
   position: relative;
   z-index: 2000;
   width: 100%;
- } 
+}
 
 #bottom {
   position: absolute;
   z-index: 2000;
   bottom: 45px;
   width: 100%;
- } 
-
+}
 
 /* Tipografias*/
 
 a {
   font-size: 12px;
   text-decoration: none;
-
 }
 
 p {
-  font-size:15px;
+  font-size: 15px;
   font-family: Arial, Helvetica, sans-serif;
   text-align: left;
   line-height: 20px;
@@ -66,9 +62,9 @@ p {
 }
 
 h1 {
-    font-size: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
+  font-size: 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
 }
 
 h2 {
@@ -77,43 +73,40 @@ h2 {
   text-align: center;
 }
 
-
-
-
 /*Sidebar*/
 
 .rounded-rect {
-  background: rgb(255,255,255, 0.9);
+  background: rgb(255, 255, 255, 0.9);
   border-radius: 3px;
   box-shadow: 0 0 50px -25px black;
-  }
-   
-  .flex-center {
+}
+
+.flex-center {
   position: absolute;
   display: flex;
   justify-content: center;
   align-items: top;
   margin-top: 15px;
-  }
-   
-  .flex-center.left {
+}
+
+.flex-center.left {
   left: 0px;
-  }
-   
-  .flex-center.right {
+}
+
+.flex-center.right {
   right: 0px;
-  }
-   
-  .sidebar-content {
+}
+
+.sidebar-content {
   position: absolute;
   width: 95%;
   height: fit-;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 32px;
   color: gray;
-  }
-   
-  .sidebar-toggle {
+}
+
+.sidebar-toggle {
   position: absolute;
   width: 1.3em;
   height: 1.3em;
@@ -121,36 +114,36 @@ h2 {
   display: flex;
   justify-content: center;
   align-items: center;
-  }
-   
-  .sidebar-toggle.left {
+}
+
+.sidebar-toggle.left {
   right: -1.5em;
-  }
-   
-  .sidebar-toggle.right {
+}
+
+.sidebar-toggle.right {
   left: -1.5em;
-  }
-   
-  .sidebar-toggle:hover {
+}
+
+.sidebar-toggle:hover {
   color: #000000;
   cursor: pointer;
-  }
-   
-  .sidebar {
+}
+
+.sidebar {
   transition: transform 1s;
   z-index: 1;
   width: 300px;
   height: 100%;
-  }
-   
-  /*
+}
+
+/*
   The sidebar styling has them "expanded" by default, we use CSS transforms to push them offscreen
   The toggleSidebar() function removes this class from the element in order to expand it.
   */
-  .left.collapsed {
+.left.collapsed {
   transform: translateX(-295px);
-  }
-   
-  .right.collapsed {
+}
+
+.right.collapsed {
   transform: translateX(295px);
-  }
+}
