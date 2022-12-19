@@ -1,33 +1,26 @@
 // Términos municipales
-
 var estiloMunicipios = {
   weight: 0.25,
   color: "black",
   dashArray: "2",
   fillOpacity: 0,
 };
-
 var municipios = L.geoJson(municipios, {
   style: estiloMunicipios,
   interactive: false,
 }).addTo(map);
-
 // Velo alt vinalopó
-
 var estiloVelo = {
   fillColor: "#ffffff",
   fillOpacity: 0.1,
   stroke: 0,
 };
-
-var velo = L.geoJson(velo, { style: estiloVelo, interactive: false }).addTo(
-  map
-);
-
+var velo = L.geoJson(velo, {
+  style: estiloVelo,
+  interactive: false,
+}).addTo(map);
 // Centrales
-
 // En funcionamiento
-
 function popupFuncionamiento(feature, layer) {
   layer.bindPopup(
     "<b>Nombre: </b>" +
@@ -46,17 +39,14 @@ function popupFuncionamiento(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     enFuncionamiento.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 var estiloFuncionando = {
   fillColor: "#499113",
   color: "#499113",
@@ -64,7 +54,6 @@ var estiloFuncionando = {
   opacity: 1,
   fillOpacity: 0.5,
 };
-
 var enFuncionamiento = L.geoJson(plantas, {
   style: estiloFuncionando,
   onEachFeature: popupFuncionamiento,
@@ -74,7 +63,6 @@ var enFuncionamiento = L.geoJson(plantas, {
 }).addTo(map);
 
 // Plantas en fase de aprobación
-
 var estiloPlantas = {
   fillColor: "#fdcc14",
   color: "#fdcc14",
@@ -82,7 +70,6 @@ var estiloPlantas = {
   opacity: 1,
   fillOpacity: 0.5,
 };
-
 function popupPlantas(feature, layer) {
   layer.bindPopup(
     "<h3>" +
@@ -96,17 +83,17 @@ function popupPlantas(feature, layer) {
       " hectáreas <br/>" +
       "<b>Estado: </b>" +
       feature.properties.estado +
-      "<br/>" +
-      "<b>Enlace: </b>" +
-      "<a target='_blank' href='" +
+      "<br/><br/>" +
+      "<b>🔗<a target='_blank' href='" +
       feature.properties.enlace +
-      "'>Anteproyecto y EsIA</a>" +
+      "'> Anteproyecto y EsIA</a></b>" +
       "<br/>" +
-      "<b>Fecha de revisión: </b>" +
-      feature.properties.actualizac +
-      "<br/>" +
-      "<b>Observaciones: </b>" +
-      feature.properties.observacio
+      "<b>🔗<a target='_blank'href='" +
+      feature.properties.observacio +
+      "'> Información adicional (resoluciones, noticias, etc.)</a></b>" +
+      "<br/><br/>" +
+      "<b>Última revisión: </b>" +
+      feature.properties.actualizac
   );
   function highlightFeature(e) {
     var layer = e.target;
@@ -117,17 +104,14 @@ function popupPlantas(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     enAprobacion.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 var enAprobacion = L.geoJson(plantas, {
   style: estiloPlantas,
   onEachFeature: popupPlantas,
@@ -135,9 +119,7 @@ var enAprobacion = L.geoJson(plantas, {
     return feature.properties.estado == "En fase de aprobación";
   },
 }).addTo(map);
-
 // Plantas con informe desfavorable
-
 var estiloDesfavorable = {
   fillColor: "#ff4526",
   color: "#ff4526",
@@ -145,7 +127,6 @@ var estiloDesfavorable = {
   opacity: 1,
   fillOpacity: 0.5,
 };
-
 function popupDesfavorable(feature, layer) {
   layer.bindPopup(
     "<h3>" +
@@ -159,17 +140,17 @@ function popupDesfavorable(feature, layer) {
       " hectáreas <br/>" +
       "<b>Estado: </b>" +
       feature.properties.estado +
-      "<br/>" +
-      "<b>Enlace: </b>" +
-      "<a target='_blank'href='" +
+      "<br/><br/>" +
+      "<b>🔗<a target='_blank' href='" +
       feature.properties.enlace +
-      "'>Anteproyecto y EsIA</a>" +
+      "'> Anteproyecto y EsIA</a></b>" +
       "<br/>" +
-      "<b>Fecha de revisión: </b>" +
-      feature.properties.actualizac +
-      "<br/>" +
-      "<b>Observaciones: </b>" +
-      feature.properties.observacio
+      "<b>🔗<a target='_blank'href='" +
+      feature.properties.observacio +
+      "'> Información adicional (resoluciones, noticias, etc.)</a></b>" +
+      "<br/><br/>" +
+      "<b>Última revisión: </b>" +
+      feature.properties.actualizac
   );
   function highlightFeature(e) {
     var layer = e.target;
@@ -180,17 +161,14 @@ function popupDesfavorable(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     desfavorable.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 var desfavorable = L.geoJson(plantas, {
   style: estiloDesfavorable,
   onEachFeature: popupDesfavorable,
@@ -198,11 +176,8 @@ var desfavorable = L.geoJson(plantas, {
     return feature.properties.estado == "Informe desfavorable";
   },
 }).addTo(map);
-
 // Líneas
-
 // Líneas Alta Tensión
-
 function popupLAT(feature, layer) {
   layer.bindPopup(feature.properties.nombre);
   function highlightFeature(e) {
@@ -214,31 +189,25 @@ function popupLAT(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     lineasATension.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 var estiloLAT = {
   color: "#fdcc14",
   weight: 1,
   opacity: 1,
   fillOpacity: 0.5,
 };
-
 var lineasATension = L.geoJson(lineasAT, {
   style: estiloLAT,
   onEachFeature: popupLAT,
 });
-
 // Apoyos líneas Alta Tensión
-
 function estiloApoyos(feature, layer) {
   return {
     radius: 0.5,
@@ -249,7 +218,6 @@ function estiloApoyos(feature, layer) {
     fillOpacity: 0.7,
   };
 }
-
 var apoyosATension = L.geoJson(apoyoslat, {
   pointToLayer: function (feature, latlng) {
     return L.circleMarker(latlng, estiloApoyos);
@@ -257,25 +225,19 @@ var apoyosATension = L.geoJson(apoyoslat, {
   style: estiloApoyos,
   interactive: false,
 }).addTo(map);
-
 var altatension = L.layerGroup([lineasATension, apoyosATension]).addTo(map);
-
 // Líneas 30Kv
-
 var estiloL30 = {
   color: "#fdcc14",
   weight: 1,
   opacity: 1,
   fillOpacity: 0.5,
 };
-
 var lineas30 = L.geoJson(lineas30kv, {
   style: estiloL30,
   interactive: false,
 }).addTo(map);
-
 // Subestaciones
-
 function popupSubestaciones(feature, layer) {
   layer.bindPopup(feature.properties.nombre);
   function highlightFeature(e) {
@@ -287,17 +249,14 @@ function popupSubestaciones(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     subestaciones.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 function estiloSubestaciones(feature, layer) {
   return {
     radius: 4,
@@ -308,7 +267,6 @@ function estiloSubestaciones(feature, layer) {
     fillOpacity: 0.7,
   };
 }
-
 var subestaciones = L.geoJson(subestaciones, {
   pointToLayer: function (feature, latlng) {
     return L.circleMarker(latlng, estiloSubestaciones);
@@ -316,9 +274,7 @@ var subestaciones = L.geoJson(subestaciones, {
   style: estiloSubestaciones,
   onEachFeature: popupSubestaciones,
 }).addTo(map);
-
 // ICV
-
 var tramiteValladoOtras = L.tileLayer.wms(
   "https://terramapas.icv.gva.es/2601_Fotovoltaicas?service=wms&request=getcapabilities",
   {
@@ -330,7 +286,6 @@ var tramiteValladoOtras = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var tramiteValladoGVA = L.tileLayer.wms(
   "https://terramapas.icv.gva.es/2601_Fotovoltaicas?service=wms&request=getcapabilities",
   {
@@ -342,7 +297,6 @@ var tramiteValladoGVA = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var tramiteLineasOtras = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -354,7 +308,6 @@ var tramiteLineasOtras = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var tramiteLineasGVA = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -366,7 +319,6 @@ var tramiteLineasGVA = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var tramiteSubestacionesOtras = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -378,7 +330,6 @@ var tramiteSubestacionesOtras = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var tramiteSubestacionesGVA = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -390,7 +341,6 @@ var tramiteSubestacionesGVA = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var tramiteICV = L.layerGroup([
   tramiteValladoOtras,
   tramiteValladoGVA,
@@ -399,11 +349,8 @@ var tramiteICV = L.layerGroup([
   tramiteSubestacionesOtras,
   tramiteSubestacionesGVA,
 ]);
-
 // ARTÍCULO 9
-
 // LICS
-
 function popupLics(feature, layer) {
   layer.bindPopup(
     "<b>Nombre: </b>" +
@@ -425,17 +372,14 @@ function popupLics(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     lics.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 var estiloLics = {
   fillColor: "#43aa8b",
   color: "#43aa8b",
@@ -443,11 +387,11 @@ var estiloLics = {
   opacity: 1,
   fillOpacity: 0.5,
 };
-
-var lics = L.geoJson(lics, { style: estiloLics, onEachFeature: popupLics });
-
+var lics = L.geoJson(lics, {
+  style: estiloLics,
+  onEachFeature: popupLics,
+});
 // ZEPAS
-
 function popupZepas(feature, layer) {
   layer.bindPopup(
     "<b>Nombre: </b>" +
@@ -469,17 +413,14 @@ function popupZepas(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     zepas.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 var estiloZepas = {
   fillColor: "#4d908e",
   color: "#4d908e",
@@ -487,11 +428,11 @@ var estiloZepas = {
   opacity: 1,
   fillOpacity: 0.5,
 };
-
-var zepas = L.geoJson(zepas, { style: estiloZepas, onEachFeature: popupZepas });
-
+var zepas = L.geoJson(zepas, {
+  style: estiloZepas,
+  onEachFeature: popupZepas,
+});
 // ZECS
-
 function popupZec(feature, layer) {
   layer.bindPopup(
     "<b>Nombre: </b>" +
@@ -513,17 +454,14 @@ function popupZec(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     zec.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 var estiloZec = {
   fillColor: "#577590",
   color: "#577590",
@@ -531,11 +469,11 @@ var estiloZec = {
   opacity: 1,
   fillOpacity: 0.5,
 };
-
-var zec = L.geoJson(zec, { style: estiloZec, onEachFeature: popupZec });
-
+var zec = L.geoJson(zec, {
+  style: estiloZec,
+  onEachFeature: popupZec,
+});
 // Zonas húmedas
-
 function popupZhumedas(feature, layer) {
   layer.bindPopup("<b>Nombre: </b>" + feature.properties.NOMBRE + "<br/>");
   function highlightFeature(e) {
@@ -547,17 +485,14 @@ function popupZhumedas(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     zhumedas.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 var estiloZhumedas = {
   fillColor: "#277da1",
   color: "#277da1",
@@ -565,17 +500,13 @@ var estiloZhumedas = {
   opacity: 1,
   fillOpacity: 0.5,
 };
-
 var zhumedas = L.geoJson(zhumedas, {
   style: estiloZhumedas,
   onEachFeature: popupZhumedas,
 });
-
 // Montes de Utilidad Pública
-
 function popupMontes(feature, layer) {
   layer.bindPopup("Monte de Utilidad Pública");
-
   function highlightFeature(e) {
     var layer = e.target;
     layer.setStyle({
@@ -585,17 +516,14 @@ function popupMontes(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     montes.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 var estiloMontes = {
   fillColor: "#90be6d",
   color: "#90be6d",
@@ -603,16 +531,12 @@ var estiloMontes = {
   opacity: 1,
   fillOpacity: 0.5,
 };
-
 var montes = L.geoJson(montes, {
   style: estiloMontes,
   onEachFeature: popupMontes,
 });
-
 // Artículo 10
-
 // Corredores territoriales
-
 var corredoresTerritoriales = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -624,9 +548,7 @@ var corredoresTerritoriales = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 // BICS + BICS distancia 500m
-
 var bics = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -638,7 +560,6 @@ var bics = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var bics500 = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -650,11 +571,8 @@ var bics500 = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var bicsTodos = L.layerGroup([bics, bics500]);
-
 // Paisajes protegidos + paisajes protegidos distancia 500 m.
-
 var paisajesp = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -666,7 +584,6 @@ var paisajesp = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var paisajesp500 = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -678,11 +595,8 @@ var paisajesp500 = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var paisajespTodos = L.layerGroup([paisajesp, paisajesp500]);
-
 // Pendientes superiores al 25%
-
 var pendientes = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -694,9 +608,7 @@ var pendientes = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 // Peligro de inundación
-
 var pinundacion = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -708,9 +620,7 @@ var pinundacion = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 // Capacidad agrológica
-
 var cagrologica = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -723,9 +633,7 @@ var cagrologica = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 // Fluviales
-
 var fluvialTerritorial = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -737,7 +645,6 @@ var fluvialTerritorial = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var fluvialTerritorial100 = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -749,7 +656,6 @@ var fluvialTerritorial100 = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var fluvialCauce = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -761,7 +667,6 @@ var fluvialCauce = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var fluvialCauce50 = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -773,16 +678,13 @@ var fluvialCauce50 = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 var fluviales = L.layerGroup([
   fluvialTerritorial,
   fluvialTerritorial100,
   fluvialCauce,
   fluvialCauce50,
 ]);
-
 // Recarga de acuíferos
-
 var acuiferos = L.tileLayer.wms(
   "http://carto.icv.gva.es/arcgis/services/tm_industria/energias_renovables_fotov_criterios/MapServer/WMSServer?",
   {
@@ -794,11 +696,8 @@ var acuiferos = L.tileLayer.wms(
     maxZoom: 21,
   }
 );
-
 // OTROS
-
 // Terreno forestal estratégico
-
 var estiloForEst = {
   fillColor: "#ABC166",
   color: "#ABC166",
@@ -806,11 +705,11 @@ var estiloForEst = {
   opacity: 1,
   fillOpacity: 0.5,
 };
-
-var forEst = L.geoJson(forEst, { style: estiloForEst, interactive: false });
-
+var forEst = L.geoJson(forEst, {
+  style: estiloForEst,
+  interactive: false,
+});
 // Paisajes de relevancia regional
-
 function popupPrr(feature, layer) {
   layer.bindPopup(
     "<b>Nombre: </b>" +
@@ -818,7 +717,6 @@ function popupPrr(feature, layer) {
       "<br/><b>Conjunto: </b>" +
       feature.properties.conjuntos
   );
-
   function highlightFeature(e) {
     var layer = e.target;
     layer.setStyle({
@@ -828,17 +726,14 @@ function popupPrr(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     prr.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 var estiloPrr = {
   fillColor: "#E2B548",
   color: "#E2B548",
@@ -846,14 +741,13 @@ var estiloPrr = {
   opacity: 1,
   fillOpacity: 0.5,
 };
-
-var prr = L.geoJson(prr, { style: estiloPrr, onEachFeature: popupPrr });
-
+var prr = L.geoJson(prr, {
+  style: estiloPrr,
+  onEachFeature: popupPrr,
+});
 // Vías pecuarias
-
 function popupVpecuarias(feature, layer) {
   layer.bindPopup(feature.properties.FORESTA_22);
-
   function highlightFeature(e) {
     var layer = e.target;
     layer.setStyle({
@@ -863,34 +757,27 @@ function popupVpecuarias(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     vpecuarias.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 var estiloVpecuarias = {
   color: "#CDA541",
   weight: 1,
   opacity: 1,
   fillOpacity: 0.5,
 };
-
 var vpecuarias = L.geoJson(vpecuarias, {
   style: estiloVpecuarias,
   onEachFeature: popupVpecuarias,
 });
-
 // Vía augusta
-
 function popupVaugusta(feature, layer) {
   layer.bindPopup("Vía Augusta");
-
   function highlightFeature(e) {
     var layer = e.target;
     layer.setStyle({
@@ -900,31 +787,25 @@ function popupVaugusta(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     vaugusta.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 var estiloVaugusta = {
   color: "#BA963B",
   weight: 1,
   opacity: 1,
   fillOpacity: 0.5,
 };
-
 var vaugusta = L.geoJson(vaugusta, {
   style: estiloVaugusta,
   onEachFeature: popupVaugusta,
 });
-
 // Recursos paisajísticos
-
 function popupRecursosp(feature, layer) {
   layer.bindPopup(feature.properties.Nombre);
   function highlightFeature(e) {
@@ -936,17 +817,14 @@ function popupRecursosp(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     recursosp.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 function estiloRecursosp(feature, layer) {
   return {
     radius: 3,
@@ -957,7 +835,6 @@ function estiloRecursosp(feature, layer) {
     fillOpacity: 0.7,
   };
 }
-
 var recursosp = L.geoJson(recursosp, {
   pointToLayer: function (feature, latlng) {
     return L.circleMarker(latlng, estiloRecursosp);
@@ -965,14 +842,10 @@ var recursosp = L.geoJson(recursosp, {
   style: estiloRecursosp,
   onEachFeature: popupRecursosp,
 });
-
 // Fragmentación del paisaje
-
 // Paisajes de relevancia regional
-
 function popupFragment(feature, layer) {
   layer.bindPopup("<b>Coherencia: </b>" + feature.properties.COH);
-
   function highlightFeature(e) {
     var layer = e.target;
     layer.setStyle({
@@ -982,17 +855,14 @@ function popupFragment(feature, layer) {
       fillOpacity: 0.75,
     });
   }
-
   function resetHighlight(e) {
     fragment.resetStyle(e.target);
   }
-
   layer.on({
     mouseover: highlightFeature,
     mouseout: resetHighlight,
   });
 }
-
 function getColor(d) {
   return d > 0.75
     ? "#90BE6D"
@@ -1004,7 +874,6 @@ function getColor(d) {
     ? "#f94144"
     : "#E2E2E2";
 }
-
 function estiloFragment(feature) {
   return {
     fillColor: getColor(feature.properties.COH),
@@ -1015,7 +884,6 @@ function estiloFragment(feature) {
     fillOpacity: 0.75,
   };
 }
-
 var fragment = L.geoJson(fragment, {
   style: estiloFragment,
   onEachFeature: popupFragment,

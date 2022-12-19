@@ -147,3 +147,10 @@ h2 {
 .right.collapsed {
   transform: translateX(295px);
 }
+
+/* Popup*/
+
+.mapboxgl-popup-content {
+  width: 350px;
+  font: 12px/20px "Helvetica Neue", Arial, Helvetica, sans-serif;
+}
