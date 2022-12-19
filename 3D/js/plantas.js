@@ -1,4 +1,9 @@
 map.on("load", () => {
+  map.addSource("plantas_icv", {
+    type: "geojson",
+    data: "data/plantas_icv.geojson",
+  });
+
   map.addSource("plantas", {
     type: "geojson",
     data: "data/plantas.geojson",
@@ -7,11 +12,23 @@ map.on("load", () => {
   // Plantas en aprobación
 
   map.addLayer({
-    id: "aprobacion",
+    id: "aprobacionEstado",
     type: "fill",
-    source: "plantas",
+    source: "plantas_icv",
     layout: {},
-    filter: ["all", ["==", "estado", "En fase de aprobación"]],
+    filter: ["all", ["==", "org_instru", "Otras Administraciones"]],
+    paint: {
+      "fill-color": "#fdcc14",
+      "fill-opacity": 0.75,
+    },
+  });
+
+  map.addLayer({
+    id: "aprobacionGVA",
+    type: "fill",
+    source: "plantas_icv",
+    layout: {},
+    filter: ["all", ["==", "org_instru", "Autonomica-GVA"]],
     paint: {
       "fill-color": "#fdcc14",
       "fill-opacity": 0.75,
@@ -23,9 +40,9 @@ map.on("load", () => {
   map.addLayer({
     id: "desestimadas",
     type: "fill",
-    source: "plantas",
+    source: "plantas_icv",
     layout: {},
-    filter: ["all", ["==", "estado", "Informe desfavorable"]],
+    filter: ["all", ["==", "org_instru", "Desestimada-Denegada"]],
     paint: {
       "fill-color": "#bc4b51",
       "fill-opacity": 0.75,
@@ -48,32 +65,40 @@ map.on("load", () => {
 
   // Pop ups
 
-  map.on("click", "aprobacion", function (e) {
+  map.on("click", "aprobacionEstado", function (e) {
     new mapboxgl.Popup()
       .setLngLat(e.lngLat)
       .setHTML(
         "<h3>" +
-          e.features[0].properties.nombre +
+          e.features[0].properties.nom_pfv +
           "</h3>" +
           "<b>Potencia: </b>" +
-          e.features[0].properties.potencia +
+          e.features[0].properties.potenciamw +
           "<br/>" +
           "<b>Superficie: </b>" +
-          e.features[0].properties.area +
-          " hectáreas <br/>" +
-          "<b>Estado: </b>" +
-          e.features[0].properties.estado +
-          "<br/><br/>" +
-          "<b>🔗<a target='_blank' href='" +
-          e.features[0].properties.enlace +
-          "'> Anteproyecto y EsIA</a></b>" +
+          e.features[0].properties.sup_m2 +
+          " m<sup>2</sup> <br/>" +
+          "<b>Titular: </b>" +
+          e.features[0].properties.titular_fv
+      )
+      .addTo(map);
+  });
+
+  map.on("click", "aprobacionGVA", function (e) {
+    new mapboxgl.Popup()
+      .setLngLat(e.lngLat)
+      .setHTML(
+        "<h3>" +
+          e.features[0].properties.nom_pfv +
+          "</h3>" +
+          "<b>Potencia: </b>" +
+          e.features[0].properties.potenciamw +
           "<br/>" +
-          "<b>🔗<a target='_blank'href='" +
-          e.features[0].properties.observacio +
-          "'> Información adicional (resoluciones, noticias, etc.)</a></b>" +
-          "<br/><br/>" +
-          "<b>Última revisión: </b>" +
-          e.features[0].properties.actualizac
+          "<b>Superficie: </b>" +
+          e.features[0].properties.sup_m2 +
+          " m<sup>2</sup> <br/>" +
+          "<b>Titular: </b>" +
+          e.features[0].properties.titular_fv
       )
       .addTo(map);
   });
@@ -83,27 +108,16 @@ map.on("load", () => {
       .setLngLat(e.lngLat)
       .setHTML(
         "<h3>" +
-          e.features[0].properties.nombre +
+          e.features[0].properties.nom_pfv +
           "</h3>" +
           "<b>Potencia: </b>" +
-          e.features[0].properties.potencia +
+          e.features[0].properties.potenciamw +
           "<br/>" +
           "<b>Superficie: </b>" +
-          e.features[0].properties.area +
-          " hectáreas <br/>" +
-          "<b>Estado: </b>" +
-          e.features[0].properties.estado +
-          "<br/><br/>" +
-          "<b>🔗<a target='_blank' href='" +
-          e.features[0].properties.enlace +
-          "'> Anteproyecto y EsIA</a></b>" +
-          "<br/>" +
-          "<b>🔗<a target='_blank'href='" +
-          e.features[0].properties.observacio +
-          "'> Información adicional (resoluciones, noticias, etc.)</a></b>" +
-          "<br/><br/>" +
-          "<b>Última revisión: </b>" +
-          e.features[0].properties.actualizac
+          e.features[0].properties.sup_m2 +
+          " m<sup>2</sup> <br/>" +
+          "<b>Titular: </b>" +
+          e.features[0].properties.titular_fv
       )
       .addTo(map);
   });
